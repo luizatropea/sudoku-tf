@@ -55,7 +55,24 @@ public class Sudoku {
 		   return null;
 		}
 	   
-	   public void jogar(char coluna, char linha, char valor) {
+	   public void verificar() {
+        for (int i = 0; i < tabuleiro.length; i++) {
+            int sl = 0;
+            int sc = 0;
+            for (int j = 0; j < tabuleiro[i].length; j++) {
+                sl += tabuleiro[i][j];
+                sc += tabuleiro[j][i];        
+            }
+            if (sl != 45) {
+                throw new IllegalStateException("Matriz inicial inválida! Erro na linha: " + i);
+            }
+            if (sc != 45) {
+                throw new IllegalStateException("Matriz inicial inválida! Erro na coluna: " + i); 
+            }        
+        }
+        // TODO: completar verificaçao!
+
+    }public void jogar(char coluna, char linha, char valor) {
 	        int i;
 	        int j;
 	        int v;
