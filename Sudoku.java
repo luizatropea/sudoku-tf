@@ -51,9 +51,9 @@ class Sudoku {
                 {1, 9, 7,  6, 3, 8,  5, 2, 4} };
 
         int [][] inicial = gerarMatriz(matriz1, matriz2, matriz3);
-        
+
         copiar(inicial, tabuleiro);
-    
+
         verificar();
         preparar();
     }
@@ -62,11 +62,11 @@ class Sudoku {
         int seletor = new Random().nextInt(3);
         switch(seletor) {
             case 0: 
-                return matriz1;
+            return matriz1;
             case 1:
-                return matriz2;
+            return matriz2;
             case 2: 
-                return matriz3;
+            return matriz3;
         }    
         return null;
     }
@@ -127,34 +127,34 @@ class Sudoku {
         int i;
         switch(linha) {
             case '1':
-                i = 1;
-                break;
+            i = 1;
+            break;
             case '2':
-                i = 2;
-                break;
+            i = 2;
+            break;
             case '3':
-                i = 3;
-                break;
+            i = 3;
+            break;
             case '4':
-                i = 4;
-                break;
+            i = 4;
+            break;
             case '5':
-                i = 5;
-                break;
+            i = 5;
+            break;
             case '6':
-                i = 6;
-                break;
+            i = 6;
+            break;
             case '7':
-                i = 7;
-                break;
+            i = 7;
+            break;
             case '8':
-                i = 8;
-                break;
+            i = 8;
+            break;
             case '9':
-                i = 9;
-                break;
+            i = 9;
+            break;
             default:
-                throw new IllegalArgumentException("Linha invalida " + linha);
+            throw new IllegalArgumentException("Linha invalida " + linha);
         }
         return i;
     }
@@ -164,42 +164,42 @@ class Sudoku {
         switch(coluna) {
             case 'A':
             case 'a':
-                j = 1;
-                break;
+            j = 1;
+            break;
             case 'B':
             case 'b':
-                j = 2;
-                break;
+            j = 2;
+            break;
             case 'C':
             case 'c':
-                j = 3;
-                break;
+            j = 3;
+            break;
             case 'D':
             case 'd':
-                j = 4;
-                break;
+            j = 4;
+            break;
             case 'E':
             case 'e':               
-                j = 5;
-                break;
+            j = 5;
+            break;
             case 'F':
             case 'f':               
-                j = 6;
-                break;
+            j = 6;
+            break;
             case 'G':
             case 'g':
-                j = 7;
-                break;
+            j = 7;
+            break;
             case 'H':
             case 'h':
-                j = 8;
-                break;
+            j = 8;
+            break;
             case 'I':
             case 'i':                
-                j = 9;
-                break;
+            j = 9;
+            break;
             default:
-                throw new IllegalArgumentException("Coluna invalida " + coluna);
+            throw new IllegalArgumentException("Coluna invalida " + coluna);
         }
         return j;
     }
@@ -208,36 +208,67 @@ class Sudoku {
         int v;
         switch(valor) {
             case '1':
-                v = 1;
-                break;
+            v = 1;
+            break;
             case '2':
-                v = 2;
-                break;
+            v = 2;
+            break;
             case '3':
-                v = 3;
-                break;
+            v = 3;
+            break;
             case '4':
-                v = 4;
-                break;
+            v = 4;
+            break;
             case '5':
-                v = 5;
-                break;
+            v = 5;
+            break;
             case '6':
-                v = 6;
-                break;
+            v = 6;
+            break;
             case '7':
-                v = 7;
-                break;
+            v = 7;
+            break;
             case '8':
-                v = 8;
-                break;
+            v = 8;
+            break;
             case '9':
-                v = 9;
-                break;
+            v = 9;
+            break;
             default:
-                throw new IllegalArgumentException("Valor invalido " + valor);
+            throw new IllegalArgumentException("Valor invalido " + valor);
         }
         return v;
+    }
+
+    public static int[] verificadorNumeros() {
+        int delimitador = 4 + (int) (Math.random() * 6);
+        int[] numerosSelecionados = new int[delimitador];
+        boolean numeroJaInserido = false;
+        boolean inseriuNumero = false;
+
+        for(int x = 0; x < delimitador; x++) {
+            inseriuNumero = false;
+
+            while(!inseriuNumero) {
+                numeroJaInserido = false;
+                int numeroParaRetirar = 1 + (int) (Math.random() * 9);
+
+                for(int p = 0; p < delimitador; p++)
+                {
+                    if(numerosSelecionados[p] == numeroParaRetirar ) {
+                        numeroJaInserido = true;
+                        break;
+                    }
+                }
+                if(!numeroJaInserido) {
+                    numerosSelecionados[x] = numeroParaRetirar;
+                    numeroJaInserido = false;
+                    inseriuNumero = true;
+
+                }
+            }
+        }
+        return numerosSelecionados;
     }
 
     public boolean fimDeJogo() {
@@ -274,3 +305,4 @@ class Sudoku {
         return s;
     }
 }
+
