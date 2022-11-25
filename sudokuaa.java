@@ -70,8 +70,7 @@ public class Sudoku {
                 throw new IllegalStateException("Matriz inicial inválida! Erro na coluna: " + i); 
             }        
         }
-        // TODO: completar verificaçao!
-
+       
     }public void jogar(char coluna, char linha, char valor) {
 	        int i;
 	        int j;
